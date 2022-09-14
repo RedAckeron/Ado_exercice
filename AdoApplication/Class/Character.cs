@@ -29,7 +29,5 @@ namespace AdoApplication.Class
         public bool IsDead { get; set; }    
         public DateTime CreationDate { get; set; }  
         public int Money { get; set; }  
-
-
     }
 }

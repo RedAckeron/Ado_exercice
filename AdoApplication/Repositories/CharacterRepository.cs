@@ -1,4 +1,5 @@
 ﻿using AdoApplication.Class;
+using AdoApplication.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -57,17 +58,9 @@ namespace AdoApplication.Repositories
                 List<Character> result = new List<Character>();
                 while (reader.Read())
                 {
-                    Character character = new Character(
-                        (int)reader["Id"],
-                        (string)reader["Name"],
-                        (int)reader["Strength"],
-                        (int)reader["Stamina"],
-                        (int)reader["Hp"],
-                        (bool)reader["IsDead"],
-                        (DateTime)reader["CreationDate"],
-                        (int)reader["Money"]
-                        );
-                    yield return character;
+                  
+                Character character = Mapper.ToCharacter(reader);
+                yield return character;
                 }
             }//disposer automatiquement a la fin de l accolade
         }
